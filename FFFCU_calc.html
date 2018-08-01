@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+        Amount of loan: $<input type="text" id="amount"><br>
+        Loan Term in Years:<input type="text" id="time"><br>
+        Interest Rate per Year:<input type="text" id="interest">
+        <p>Click the button.</p>
+            <button onclick="calc()">Try it</button>
+        <p id="calc"></p>
+    
+<script>
+function calc() {
+    //Collecting all the amounts
+    var amount = document.getElementById("amount").value;
+    var time = document.getElementById("time").value;
+    var interest = document.getElementById("interest").value;
+    //breaking down equation into steps
+    var a = (parseInt(amount.replace(/,/g, ''), 10));
+    var t = -Math.abs((parseInt(time.replace(/,/g, ''), 10)) * 12);
+    var i = ((parseInt(interest.replace(/,/g, ''), 10)) / 100) / 12;
+    var x = Math.pow((1 + i), t);
+    var result = (i / (1 - x)) * a;
+    
+    document.getElementById("calc").innerHTML = "$" + result.toFixed(2) + " a month";
+}
+</script>
+
+</body>
+</html>
