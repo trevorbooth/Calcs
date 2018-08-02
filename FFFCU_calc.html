@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" href="style.css">  
+</head>
 <body>
-    
-        Amount of loan: $<input type="text" id="amount"><br>
-        Loan Term in Years:<input type="text" id="time"><br>
-        Interest Rate per Year:<input type="text" id="interest">
-        <p>Click the button.</p>
-            <button onclick="calc()">Try it</button>
+    <ol>
+        <li>
+            Amount of loan: <input placeholder="$" type="text" id="amount">
+        </li>
+        <li>
+            Loan Term in Years:<input type="text" id="time">
+        </li>
+        <li>
+            Interest Rate per Year:<input placeholder="%" type="text" id="interest">
+        </li>
+    </ol>
+        <button onclick="calc()">Calculate</button>
         <p id="calc"></p>
-    
 <script>
 function calc() {
     //Collecting all the amounts
@@ -21,7 +29,6 @@ function calc() {
     var i = ((parseInt(interest.replace(/,/g, ''), 10)) / 100) / 12;
     var x = Math.pow((1 + i), t);
     var result = (i / (1 - x)) * a;
-    
     document.getElementById("calc").innerHTML = "$" + result.toFixed(2) + " a month";
 }
 </script>
