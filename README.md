@@ -1,3 +1,3 @@
 # loanCalc
 This is just a simple loan calculator to figure out monthly payments.
-Style soon to come.
+Styling is minimalist, as the styling is on the site with a different markup.
