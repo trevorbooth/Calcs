@@ -25,12 +25,13 @@ function calc() {
     var time = document.getElementById("time").value;
     var interest = document.getElementById("interest").value;
     //breaking down equation into steps
-    var a = (parseInt(amount.replace(/,/g, ''), 10));
-    var t = -Math.abs((parseInt(time.replace(/,/g, ''), 10)) * 12);
-    var i = ((parseInt(interest.replace(/,/g, ''), 10)) / 100) / 12;
+    var a = (parseFloat(amount.replace(/,/g, ''), 10));
+    var t = -Math.abs((parseFloat(time.replace(/,/g, ''), 10)) * 12);
+    var i = ((parseFloat(interest.replace(/,/g, ''), 10)) / 100) / 12;
     var x = Math.pow((1 + i), t);
     var result = (i / (1 - x)) * a;
-    document.getElementById("calc").innerHTML = "$" + result.toFixed(2) + " a month";
+        if ( isNaN(result) ) { alert('Please fill all fields'); }
+            document.getElementById("calc").innerHTML = "$" + result.toFixed(2) + " a month";
 }
 </script>
 
