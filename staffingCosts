@@ -1,0 +1,75 @@
+<table id="costs">
+ <tr>
+ <th></th>
+ <th class="pay">Enter your business&#039; hourly Pay: $<input oninput="calc()" type="text" id="base" placeholder="15" ></th> 
+ <th>Hourly Pay with us: $<span class="pay" id="baseBill">21</span></th>
+ </tr>
+ <tr>
+<td>Legally Required: Social Security, Medicare, State and Federal Unemployment tax, Workers&#039; Compensation</td>
+ <td>Tax Costs: $<span id="taxBill">2.59</span></td>
+ <td>Tax Costs with us: $<span>0</span></td>
+ </tr>
+ <tr>
+ <td>Fringe Benefit Payments: Holiday and vacation pay, sick leave, personal leave, insurance, bonuses, 401(k), etc.</td>
+ <td>Fringe Costs: $<span id="fringeBill">4.56</span></td>
+ <td>Fringe Costs with us: $<span>0</span></td>
+</tr>
+ <tr>
+ <td>Recruiting Costs: Advertising, testing, reference checking, interviewing, hiring, administrative, training.</td>
+ <td>Recruiting/Hiring Cost: $<span id="recBill">1.80</span></td>
+ <td>Recruiting/Hiring Cost with us: $<span>0</span></td>
+ </tr>
+ <tr>
+ <td>Onboarding Costs: Tutorials, training, orientation, skill testing</td>
+ <td> Training/Orientation Cost: $<span id="trainBill">1.95</span></td> <td>Training/Orientation Cost with us: $<span>0</span></td>
+</tr>
+ <tr>
+ <td>Termination Costs: Unemployment claim administration, severance pay</td>
+ <td>Termination Cost: $<span id="termBill">0.30</span></td>
+ <td>Termination Cost with us: $<span>0</span></td>
+ </tr>
+ <tr>
+ <td>Administrative Cost: Payroll processing, W-2, W-4, I-9, Hiring packet, Salary Increases etc. </td>
+ <td>Administrative Cost: $<span id="adminBill">2.27</span></td>
+ <td>Administrative Cost with us: $<span>0</span></td>
+ </tr>
+ <tr>
+ <td></td>
+ <td>Total: $<span id="total">28.47</span></td>
+<td>Total with us: $<span id="ourTotal">21.00</span></td>
+</tr>
+</table>
+ <div class="totals">
+ <p>Total savings per Hour: <span>$</span><span id="perHour">7.47</span></p>
+
+ <p>Total savings per Month: <span>$</span><span id="perMonth">1294.78</span></p>
+
+ <p>Total savings per Year: <span>$</span><span id="perYear">15537.30</span></p>
+
+ Number of employees: <input oninput="calc()" type="text" id="employees" value="1" >
+<div class="grand">
+ <p>Grand Total: <span>$</span><span id="employeesBill">15537.30</span></p>
+ </div>
+</div>
+<script>
+ function calc() {
+ var base = document.getElementById("base").value;
+ var employees = document.getElementById("employees").value;
+ //Compares percentages on hourly
+ document.getElementById("baseBill").innerHTML = (+base * 1.4).toFixed(2);
+ document.getElementById("taxBill").innerHTML = (+base * .173).toFixed(2);
+ document.getElementById("fringeBill").innerHTML = (+base * .304 ).toFixed(2);
+ document.getElementById("recBill").innerHTML = (+base * .12 ).toFixed(2);
+ document.getElementById("trainBill").innerHTML = (+base * .13 ).toFixed(2);
+ document.getElementById("termBill").innerHTML = (+base * .02 ).toFixed(2);
+ document.getElementById("adminBill").innerHTML = (+base * .151 ).toFixed(2);
+ document.getElementById("total").innerHTML = ((+base * .898) + +base).toFixed(2);
+ document.getElementById("ourTotal").innerHTML = (+base * 1.4).toFixed(2);
+ //Total Savings 
+ document.getElementById("perHour").innerHTML = (((+base * .898) + +base) - (+base * 1.4)).toFixed(2);
+ document.getElementById("perMonth").innerHTML = ((((+base * .898) + +base) - (+base * 1.4)) * 173.33).toFixed(2);
+ document.getElementById("perYear").innerHTML = (((((+base * .898) + +base) - (+base * 1.4)) * 173.33) * 12).toFixed(2);
+ //Multiplies the Number of Employees
+ document.getElementById("employeesBill").innerHTML = ((((((+base * .898) + +base) - (+base * 1.4)) * 173.33) * 12) * employees).toFixed(2); 
+}
+</script>
