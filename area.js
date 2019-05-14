@@ -3,7 +3,7 @@ function calc() {
  var length = document.getElementById("length").value;
  var width = document.getElementById("width").value;
  var depth = document.getElementById("depth").value;
-    //removing commas - changing to int
+    //removing commas 
  var l = (parseFloat(length.replace(/,/g, ''), 10));
  var w = (parseFloat(width.replace(/,/g, ''), 10));
  var d = (parseFloat(depth.replace(/,/g, ''), 10));
