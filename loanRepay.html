@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Loan Repayment</title>
+  </head>
+  <body>
+ <div class="calcContainer">
+      <form>
+        Amount Borrowed<br><input type="text" name="Amount Borrowed" id="AB" placeholder="$0"><br>
+        Interest Rate<br><input type="text" name="Interest Rate" id="IR" placeholder="0%"><br>
+        Term of Loan (in Months)<br><input type="text" name="Term of Loan" id="TL" placeholder="0"><br>
+          <button type="button" onclick="loanRepay()" name="Calc">Calculate</button>
+      </form>
+          <ul>
+              <li>
+                    <p class="mp">Monthly Payments</p>
+                    <span id="pay">$0</span>
+              </li>
+              <li>
+                   <span id="interest"></span>
+              </li>
+              <li>
+                    <span id="total"></span>
+              </li>
+              <li>
+                    <a href="/loan-request/">Apply for Loans</a>
+              </li>
+          </ul>
+      </div>   
+    <script>
+        function loanRepay(){
+           //Present Value 
+            var pv = (parseFloat((document.getElementById("AB").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10));
+            //Interest Rate (Compounded Monthly)
+            var r = ((parseFloat((document.getElementById("IR").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10)) / 100) / 12;
+            console.log(r);
+            //Number of Compounds in a Period - Compounded monthly 
+            var n = (parseFloat((document.getElementById("TL").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10));
+        //Payments per Month
+        let pay = pv * (r / (1 - (1 + r)**-n));
+        document.getElementById("pay").innerHTML = "$" + pay.toFixed(2);
+        //Interest Paid
+        let interest = (pay * n) - pv;
+        document.getElementById("interest").innerHTML = "Interest Paid $" + interest.toFixed(2);
+        //Total Payment
+        let total = interest + pv;
+        document.getElementById("total").innerHTML = "Total Amount $" + total.toFixed(2);
+            //if form isn't filled out correctly
+        if (isNaN(total))
+        { alert('Please fill all fields with numerical values before pressing calculate.');} else{};
+        }
+    </script>
+  </body>
+</html>
