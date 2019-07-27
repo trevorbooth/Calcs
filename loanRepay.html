@@ -31,12 +31,12 @@
     <script>
         function loanRepay(){
            //Present Value 
-            var pv = (parseFloat((document.getElementById("AB").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10));
+            var pv = (parseFloat((document.getElementById("AB").value).replace(/[$,%]/g,''), 10));
             //Interest Rate (Compounded Monthly)
-            var r = ((parseFloat((document.getElementById("IR").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10)) / 100) / 12;
+            var r = ((parseFloat((document.getElementById("IR").value).replace(/[$,%]]/g,''), 10)) / 100) / 12;
             console.log(r);
             //Number of Compounds in a Period - Compounded monthly 
-            var n = (parseFloat((document.getElementById("TL").value).replace(/[&\/\\#,+()$~%'":*?<>{}]/g,''), 10));
+            var n = (parseFloat((document.getElementById("TL").value).replace(/[$,%]]/g,''), 10));
         //Payments per Month
         let pay = pv * (r / (1 - (1 + r)**-n));
         document.getElementById("pay").innerHTML = "$" + pay.toFixed(2);
